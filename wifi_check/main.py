@@ -4,20 +4,22 @@ from boot import params, red, green
 
 
 def blink(led):
+    # helper for led confirmation
     i = 0
     while i < 3:
         led.on()
-        time.sleep(1)
+        time.sleep(0.5)
         led.off()
         i += 1
-        time.sleep(1)
+        time.sleep(0.5)
 
 
 html = """<!DOCTYPE html>
 <html>
-    <head> <title>ESP8266 Pins</title> </head>
-    <body> <h1>ESP8266 Pins</h1>
-        <p>params of connect: <p>
+    <head> <title>ESP8266 Page</title> </head>
+    <body> <h1>ESP8266 Page</h1>
+        <p><b>params of connect:</b></p>
+         <p> %s <p>
     </body>
 </html>
 """
@@ -39,8 +41,8 @@ while True:
         line = cl_file.readline()
         if not line or line == b'\r\n':
             break
-    row = [str(params)]
-    response = html % '\n'.join(row)
+
+    response = html % '<br>'.join(map(str, params))
     cl.send(response)
     blink(red)
     cl.close()

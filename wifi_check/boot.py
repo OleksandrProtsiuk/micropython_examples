@@ -5,8 +5,8 @@ red = machine.Pin(5, machine.Pin.OUT)
 yellow = machine.Pin(4, machine.Pin.OUT)
 green = machine.Pin(0, machine.Pin.OUT)
 
-wifi = 'Big_Alex'
-pwd = 'yader2044'
+wifi = 'WIFI ESSID'
+pwd = 'WIFI PASS'
 
 
 def do_connect(essid, password):
@@ -21,8 +21,8 @@ def do_connect(essid, password):
             pass
     yellow.off()
     green.on()
-    print('network config:', sta_if.ifconfig())
 
 
 do_connect(wifi, pwd)
 params = network.WLAN(network.STA_IF).ifconfig()
+print('network config:', params)
