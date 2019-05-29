@@ -1,8 +1,8 @@
-###**Some samples of micropython code for esp8266**
+#Some samples of micropython code for esp8266
 
 Short manual:
 
-####**Getting started with MicroPython on the ESP8266**
+####Getting started with MicroPython on the ESP8266
 
 1. Get the firmware
     http://micropython.org/download#esp8266
@@ -30,7 +30,7 @@ Short manual:
    
    ------------------------------------
    
-####**MicroPython REPL over the serial port**
+####MicroPython REPL over the serial port
 
 For Linux users:
 
