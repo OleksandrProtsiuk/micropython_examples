@@ -1,11 +1,13 @@
 import network
 import machine
 import json
+import time
 
 red = machine.Pin(5, machine.Pin.OUT)
 yellow = machine.Pin(4, machine.Pin.OUT)
 green = machine.Pin(0, machine.Pin.OUT)
 button = machine.Pin(12, machine.Pin.IN, machine.Pin.PULL_UP)
+flag = bool
 
 with open('data.txt') as json_file:
     keys = json.load(json_file)
@@ -27,9 +29,12 @@ def do_connect(essid, password):
     green.on()
 
 
-while True:
+while flag:
     red.on()
-    if not button.value():
+    first = button.value()
+    time.sleep(0.01)
+    second = button.value()
+    if first and not second:
         print('Button pressed!\nCheck wifi...')
         do_connect(essid, pwd)
         red.off()
